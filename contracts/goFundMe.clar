@@ -7,13 +7,14 @@
 (define-data-var total-donations uint u0)
 
 ;; Function to make a donation
-(define-public (donate (amount uint))
+(define-public (fund (amount uint))
   (let ((sender tx-sender))
     (begin
       ;; Update the donor's total donation amount
       (map-set donors sender (+ (default-to u0 (map-get? donors sender)) amount))
       ;; Update the total donations
       (var-set total-donations (+ (var-get total-donations) amount))
+      
       ;; Transfer the donation amount from the sender to the contract
       (stx-transfer? amount sender (as-contract tx-sender))
     )
