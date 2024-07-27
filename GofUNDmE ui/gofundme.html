@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations dApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donations dApp</h1>
+        <input type="number" id="donationAmount" placeholder="Enter donation amount (in STX)">
+        <button onclick="donate()">Donate</button>
+        <button onclick="getTotalDonations()">Get Total Donations</button>
+        <input type="text" id="donorAddress" placeholder="Enter donor address">
+        <button onclick="getDonorDonations()">Get Donor Donations</button>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        // Mock functions to simulate contract interactions
+        function donate() {
+            const amount = document.getElementById('donationAmount').value;
+            updateStatus(`Donation of ${amount} STX sent successfully!`);
+        }
+
+        function getTotalDonations() {
+            // In a real implementation, this would call the contract
+            const mockTotal = Math.floor(Math.random() * 10000);
+            updateStatus(`Total donations: ${mockTotal} STX`);
+        }
+
+        function getDonorDonations() {
+            const address = document.getElementById('donorAddress').value;
+            // In a real implementation, this would call the contract
+            const mockDonation = Math.floor(Math.random() * 1000);
+            updateStatus(`Donations from ${address}: ${mockDonation} STX`);
+        }
+
+        function updateStatus(message) {
+            document.getElementById('status').innerText = message;
+        }
+    </script>
+</body>
+</html>
